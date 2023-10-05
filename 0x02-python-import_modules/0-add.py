@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 from add_0 import add
 
-# Conditional blocking of code 
-if __name__ == "__main__":
+# Assign values to variables a and b
+a = 1
+b = 2
 
-# Assign values to variables
-    a = 1
-    b = 2
-    print("{:d} + {:d} = {:d}".format(a, b, add(a, b)))
+# Calculate the result using the imported add function
+result = add(a, b)
+
+# Print the result with string formatting
+print(f"{a} + {b} = {result}")
