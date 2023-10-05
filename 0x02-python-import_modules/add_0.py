@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-from add_0 import add
+def add(a, b):
+    """My addition function
 
-# Assign values to variables a and b
-a = 1
-b = 2
+    Args:
+        a: first integer
+        b: second integer
 
-# Calculate the result using the imported add function
-result = add(a, b)
-
-# Print the result with string formatting
-print(f"{a} + {b} = {result}")
+    Returns:
+        The return value. a + b
+    """
+    return (a + b)
