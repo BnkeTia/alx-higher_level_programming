@@ -1,6 +1,7 @@
-carrie@ubuntu:0x03$ cat lists.h 
 #ifndef LISTS_H
 #define LISTS_H
+
+#include <stddef.h>
 
 /**
  * struct listint_s - singly linked list
