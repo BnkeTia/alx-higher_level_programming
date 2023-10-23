@@ -1,14 +1,14 @@
-#!/usr/bin/python3
+#!/usr/python3
 def safe_print_list_integers(my_list=[], x=0):
-    printed_integers = 0
-    for i in my_list:
+    total_count = 0
+    for i in range(x):
         try:
-            print("{:d}" .format(i), end="")
-            printed_integers += 1
-            if printed_integers == x:
-                break
-
-        except (ValueError, TypeError):
-            pass
-    print()  # Add a new line
-    return printed_integers
+            if isinstance(my_list[i], int):
+                print("{:d}".format(my_list[i]), end="")
+                total_count += 1
+            else:
+                continue
+        except IndexError:
+            break
+    print()
+    return total_count
