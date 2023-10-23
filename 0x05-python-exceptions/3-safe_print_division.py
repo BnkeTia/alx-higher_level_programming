@@ -1,11 +1,11 @@
-#1/usr/binpython3
+#!/usr/binpython3
 def safe_print_division(a, b):
-    result = None
+    ratio = None
     try:
-        result = a / b
+        ratio = a / b
     except ZeroDivisionError:
-        result = None
+        ratio = None
 
     finally:
-        print("Inside result: {}" .format(result))
-        return result
+        print("Inside result: {}" .format(ratio))
+        return ratio
