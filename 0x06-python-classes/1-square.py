@@ -11,4 +11,4 @@ class Square:
         instantiation with size
 
         """
-        self._size = size
+        self.__size = size
