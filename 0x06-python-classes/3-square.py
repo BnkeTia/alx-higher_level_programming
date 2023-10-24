@@ -2,9 +2,12 @@
 """
 class that defines the area of a square
 """
+
+
 class Square:
     """
     A class that defines a square.
+
     """
 
     def __init__(self, size=0):
