@@ -15,7 +15,8 @@ class Node:
 
         Args:
             data (int): The data to be stored in the node.
-            next_node (Node, optional): The next node in the list (default is None).
+            next_node (Node, optional): The next node in the list
+            (default is None).
         """
         self.data = data
         self.next_node = next_node
@@ -72,7 +73,8 @@ class SinglyLinkedList:
 
     def sorted_insert(self, value):
         """
-        Inserts a new Node into the correct sorted position in the list (increasing order).
+        Inserts a new Node into the correct sorted position
+        in the list (increasing order).
 
         Args:
             value (int): The value to be inserted into the list.
