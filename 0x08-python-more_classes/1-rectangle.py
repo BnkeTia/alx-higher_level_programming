@@ -7,12 +7,30 @@ a private instamce attribute
 
 
 class Rectangle:
+    """
+    A class that defines a rectangle
+    """
+
     def __init__(self, width=0, height=0):
+
+        """
+        instantiation with height.
+        """
         self.height = height
+        """
+        instantiation with width
+        """
         self.width = width
 
+    """
+    An object instance that defines the height of the rectangle
+    """
     @property
     def height(self):
+
+        """
+        Returns: The size of the rectangle
+        """
         return self.__height
 
     @height.setter
