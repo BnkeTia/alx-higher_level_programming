@@ -66,5 +66,9 @@ if __name__ == '__main__':
 
     solutions = solve_nqueens(N)
     for solution in solutions:
-        for row in solution:
-            print(" ".join(["Q" if col else "." for col in row]))
+        positions = []
+        for i in range(len(solution)):
+            for j in range(len(solution[i])):
+                if solution[i][j] == 1:
+                    positions.append([i, j])
+        print(positions)
