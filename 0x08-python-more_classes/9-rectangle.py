@@ -79,7 +79,6 @@ class Rectangle:
     def __repr__(self):
         return f'Rectangle({self.__width}, {self.__height})'
 
-
     """
     condition to print a message when an instance of the rectangle
     is deleted.
@@ -88,7 +87,6 @@ class Rectangle:
     def __del__(self):
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
-
 
     """
     applying the static method that returns the biggest rectangle
