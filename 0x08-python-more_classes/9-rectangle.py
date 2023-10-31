@@ -105,3 +105,10 @@ class Rectangle:
             return rect_1
         else:
             return rect_2
+
+    """
+    Definition of a class square that returns a rectangle.
+    """
+    @classmethod
+    def square(cls, size=0):
+        return cls(size, size)
