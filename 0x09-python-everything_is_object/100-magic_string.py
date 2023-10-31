@@ -1,4 +1,3 @@
-def magic_string():
-    return ', '.join(['BestSchool'] * magic_string.counter)
-magic_string.counter = 0
-magic_string.counter += 1
+#!/usr/bin/python3
+def magic_string(n=1, s=""):
+    return "BestSchool" + s if n == 1 else magic_string(n -1, "BestSchool" + s)
