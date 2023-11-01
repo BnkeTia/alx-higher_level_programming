@@ -79,7 +79,6 @@ class Rectangle:
     def __repr__(self):
         return f'Rectangle({self.__width}, {self.__height})'
 
-
     """
     condition to print a message when an instance of the rectangle
     is deleted.
@@ -88,7 +87,6 @@ class Rectangle:
     def __del__(self):
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
-
 
     """
     applying the static method that returns the biggest rectangle
@@ -103,9 +101,7 @@ class Rectangle:
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
             raise TypeError("rect_2 must be an instance of Rectangle")
-        area1 = rect_1.width * rect_1.heigh
-        area2 = rect_2.width * rect_2.height
-        if area1 >= area2:
+        if rect_1.area() >= rect_2.area():
             return rect_1
         else:
             return rect_2
