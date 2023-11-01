@@ -1,82 +1,74 @@
 #!/usr/bin/python3
 
+"""
+importing the sys module
+"""
+
 import sys
 """
-The queens code.
+Definition of an is_safe method.
+
 """
 
 
 def is_safe(board, row, col, n):
-    """
-    Check if it's safe to place a queen in the given position.
-
-    Args:
-        board (list[list[int]]): The chessboard.
-        row (int): The current row.
-        col (int): The current column.
-        n (int): The size of the chessboard.
-
-    Returns:
-        bool: True if it's safe, False otherwise.
-    """
-    # Check if there is a queen in the same column
-    for i in range(row):
-        if board[i][col] == 1:
+    for i in range(col):
+        if board[row][i]:
             return False
-
-    # Check upper-left diagonal
     for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 1:
+        if board[i][j]:
             return False
-
-    # Check upper-right diagonal
-    for i, j in zip(range(row, -1, -1), range(col, n)):
-        if board[i][j] == 1:
+    for i, j in zip(range(row, n, 1), range(col, -1, -1)):
+        if board[i][j]:
             return False
-
     return True
 
 
-def solve_nqueens(n):
-    """
-    Solve the N Queens problem and print solutions.
+"""
+solving the queens problem.
+"""
 
-    Args:
-        n (int): The size of the chessboard.
-    """
+
+def solve_nqueens(n):
+    solutions = []
     if n < 4:
-        return
+        return solutions
+
+    def solve(board, col):
+        if col == n:
+            solutions.append(board[:])
+            return
+        for i in range(n):
+            if is_safe(board, i, col, n):
+                board[i][col] = 1
+                solve(board, col + 1)
+                board[i][col] = 0
 
     board = [[0 for _ in range(n)] for _ in range(n)]
-
-    def solve(row):
-        if row == n:
-            for i in range(n):
-                print("".join(['Q' if board[row][i] == 1
-                              else '.' for i in range(n)]))
-            print()
-            return
-
-        for col in range(n):
-            if is_safe(board, row, col, n):
-                board[row][col] = 1
-                solve(row + 1)
-                board[row][col] = 0
-
-    solve(0)
+    solve(board, 0)
+    return solutions
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
 
     try:
         N = int(sys.argv[1])
-        solve_nqueens(N)
     except ValueError:
         print("N must be a number")
         sys.exit(1)
-    except IndexError:
+
+    if N < 4:
         print("N must be at least 4")
         sys.exit(1)
+
+    solutions = solve_nqueens(N)
+    for solution in solutions:
+        positions = []
+        for i in range(len(solution)):
+            for j in range(len(solution[i])):
+                if solution[i][j] == 1:
+                    positions.append([i, j])
+        print(positions)
