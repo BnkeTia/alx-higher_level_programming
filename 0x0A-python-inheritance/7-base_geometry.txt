@@ -1,0 +1,14 @@
+# Test Case 1: Valid integer
+12
+
+# Test Case 2: Valid integer
+89
+
+# Test Case 3: Invalid input (string)
+"John"
+
+# Test Case 4: Valid integer (zero)
+0
+
+# Test Case 5: Invalid input (negative integer)
+-4
