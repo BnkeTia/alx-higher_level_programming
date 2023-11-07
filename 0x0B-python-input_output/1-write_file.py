@@ -14,4 +14,7 @@ def write_file(filename="", text=""):
     """
     try:
         with open(filename, 'w', encoding='utf-8') as f:
-            return f.write(text)
+            count = f.write(text)
+            return count
+    except Exception:
+        return 0
