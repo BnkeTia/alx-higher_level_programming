@@ -4,6 +4,7 @@ class MyList(list):
     def print_sorted(self):
         print(sorted(self))
 
+
 # Read input from a text file
 def read_input(filename):
     with open(filename, 'r') as file:
@@ -12,6 +13,7 @@ def read_input(filename):
             numbers = [int(num) for num in line.split()]
             my_list = MyList(numbers)
             my_list.print_sorted()
+
 
 if __name__ == '__main__':
     input_file = 'test.txt'  # Replace with the actual text file name
