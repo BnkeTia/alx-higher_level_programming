@@ -3,6 +3,8 @@
 """
 A method to append a string to a text file (UTF8)
 """
+
+
 def append_write(filename="", text=""):
     """
     A function that appends a string to a file
