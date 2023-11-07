@@ -1,14 +1,27 @@
-# Test Case 1: Valid integer
-12
+# Import the BaseGeometry class from the module
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-# Test Case 2: Valid integer
-89
+# Create an instance of BaseGeometry
+>>> bg = BaseGeometry()
 
-# Test Case 3: Invalid input (string)
-"John"
+# Test the area method (not implemented)
+>>> bg.area()
+Traceback (most recent call last):
+  Exception: area() is not implemented
 
-# Test Case 4: Valid integer (zero)
-0
+# Test integer_validator with valid input
+>>> bg.integer_validator("my_int", 12)
 
-# Test Case 5: Invalid input (negative integer)
--4
+# Test integer_validator with a non-integer value
+>>> try:
+...     bg.integer_validator("name", "John")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+TypeError: name must be an integer
+
+# Test integer_validator with a non-positive integer value
+>>> try:
+...     bg.integer_validator("age", 0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+ValueError: age must be greater than 0
