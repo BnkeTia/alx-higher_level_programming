@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
 A script to compute metrics from log data read from stdin.
-Input format: <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
+Input format: <IP Address> -
+[<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
 Prints metrics every 10 lines or after a keyboard interruption (CTRL + C).
 """
 
@@ -15,9 +16,11 @@ def print_metrics(total_size, status_codes):
         if status_codes[code] > 0:
             print("{}: {}".format(code, status_codes[code]))
 
+
 try:
     total_size = 0
-    status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404: 0, 405: 0, 500: 0}
+    status_codes = {200: 0, 301: 0, 400: 0, 401: 0, 403: 0, 404:
+                    0, 405: 0, 500: 0}
     line_count = 0
 
     for line in sys.stdin:
