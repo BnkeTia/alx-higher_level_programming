@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """Implementation of the base class"""
 
+
 class Base:
     """Private class attribute of the Base class is initialized to zero"""
     __nb_objects = 0
-
 
     """
     A method that initializes the class constructor ('__init__') and
