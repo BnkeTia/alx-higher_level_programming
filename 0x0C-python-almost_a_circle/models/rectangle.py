@@ -87,6 +87,6 @@ class Rectangle(Base):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
     """ update method to handle no keywords"""
     def update(self, *args):
-        attribute = ["id", "watch", "height", "x", "y"]
+        attributes = ["id", "watch", "height", "x", "y"]
         for i, value in enumerate(args):
             setattr(self, attributes[i], value)
