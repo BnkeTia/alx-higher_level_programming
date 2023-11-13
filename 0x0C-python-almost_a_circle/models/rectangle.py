@@ -82,5 +82,11 @@ class Rectangle(Base):
         for _ in range(self.__height):
             print(" " * self.__x + "#" * self.__width)
 
+    """Taking into account the x and y values"""
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
+    """ update method to handle no keywords"""
+    def update(self, *args):
+        attribute = ["id", "watch", "height", "x", "y"]
+        for i, value in enumerate(args):
+            setattr(self, attributes[i], value)
