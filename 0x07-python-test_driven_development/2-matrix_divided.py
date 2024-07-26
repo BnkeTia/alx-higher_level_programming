@@ -1,41 +1,39 @@
 #!/usr/bin/python3
-"""
-
-This module is composed by a function that divides the numbers of a matrix
-
-"""
+"""1. Divide a matrix"""
 
 
 def matrix_divided(matrix, div):
-    # check if div is a number and not equal to 0
-    if not isinstance(div, (int, float)):
+    """
+    Function that divides all elements of a matrix
+    Raise TypeError and ZeroDiviionError with messages
+    """
+
+    if not type(div) in (int, float):
         raise TypeError("div must be a number")
 
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    # check if the input is a matrix(a list of lists)
+    terr_msg = "matrix must be a matrix (list of lists) of integers/floats"
+
     if not matrix or not isinstance(matrix, list):
-        raise TypeError("Each row of the matrix must have the same size")
+        raise TypeError(terr_msg)
 
-    # initialize the variable to store the length of the row
-    length = 0
+    _len = 0
+    serr_msg = "Each row of the matrix must have the same size"
 
-    for element in matrix:
-        # check if all elements have the same size
-        if not element or not isinstance(element, list):
-            raise TypeError("Each row of the matrix must have the same size")
+    for elems in matrix:
+        if not elems or not isinstance(elems, list):
+            raise TypeError(terr_msg)
 
-        if length != 0 and len(element) != length:
-            raise TypeError("Each row of the matrix must have the same size")
-        for num in element:
+        if _len != 0 and len(elems) != _len:
+            raise TypeError(serr_msg)
+
+        for num in elems:
             if not type(num) in (int, float):
-                raise TypeError(
-                    "Each row of the matrix must have the same size")
+                raise TypeError(terr_msg)
 
-            length = len(element)
+        _len = len(elems)
 
-            # divide all elements of the matrix by div,rounded to 2dp
-            result = list(
-                map(lambda x: list(map(lambda y: round(y / div, 2), x)), matrix))
-            return (result)
+    r = list(map(lambda x: list(map(lambda y: round(y / div, 2), x)), matrix))
+    return (r)

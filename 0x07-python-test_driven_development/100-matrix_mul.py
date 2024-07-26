@@ -1,56 +1,75 @@
+#!/usr/bin/python3
+"""6. Matrix multiplication"""
+
+
 def matrix_mul(m_a, m_b):
-    """
-    Multiply two matrices m_a and m_b.
+    """Function that multiplies 2 matrices"""
 
-    Args:
-    m_a (list of lists): The first matrix to be multiplied.
-    m_b (list of lists): The second matrix to be multiplied.
+    if not isinstance(m_a, list):
+        raise TypeError("m_a must be a list")
 
-    Returns:
-    list of lists: The resulting matrix after multiplication.
+    if not isinstance(m_b, list):
+        raise TypeError("m_b must be a list")
 
-    Raises:
-    - TypeError: If m_a or m_b is not a list, not a list of lists,
-    or contains non-integer/float elements.
-    - ValueError: If m_a or m_b is empty, or if the matrices can't
-    be multiplied.
+    for elem in m_a:
+        if not isinstance(elem, list):
+            raise TypeError("m_a must be a list of lists")
 
-    """
-    # Validate m_a and m_b
-    if not isinstance(m_a, list) or not all(isinstance(row, list) for
-                                            row in m_a):
-        raise TypeError("m_a must be a list of lists")
-    if not isinstance(m_b, list) or not all(isinstance(row, list) for
-                                            row in m_b):
-        raise TypeError("m_b must be a list of lists")
-    if not m_a or any(len(row) == 0 for row in m_a):
+    for elem in m_b:
+        if not isinstance(elem, list):
+            raise TypeError("m_b must be a list of lists")
+
+    if len(m_a) == 0 or (len(m_a) == 1 and len(m_a[0]) == 0):
         raise ValueError("m_a can't be empty")
-    if not m_b or any(len(row) == 0 for row in m_b):
+
+    if len(m_b) == 0 or (len(m_b) == 1 and len(m_b[0]) == 0):
         raise ValueError("m_b can't be empty")
 
-    # Validate that all elements are integers or floats
-    for row in m_a:
-        if not all(isinstance(element, (int, float)) for element in row):
-            raise TypeError("m_a should contain only integers or floats")
-    for row in m_b:
-        if not all(isinstance(element, (int, float)) for element in row):
-            raise TypeError("m_b should contain only integers or floats")
+    for lists in m_a:
+        for elem in lists:
+            if not type(elem) in (int, float):
+                raise TypeError("m_a should contain only integers or floats")
 
-    # Validate that m_a and m_b are rectangular matrices
-    if len(set(len(row) for row in m_a)) > 1:
-        raise TypeError("each row of m_a must be of the same size")
-    if len(set(len(row) for row in m_b)) > 1:
-        raise TypeError("each row of m_b must be of the same size")
+    for lists in m_b:
+        for elem in lists:
+            if not type(elem) in (int, float):
+                raise TypeError("m_b should contain only integers or floats")
 
-    # Validate that m_a and m_b can be multiplied
+    m_len = 0
+    for elem in m_a:
+        if m_len != 0 and m_len != len(elem):
+            raise TypeError("each row of m_a must be of the same size")
+        m_len = len(elem)
+
+    m_len = 0
+    for elem in m_b:
+        if m_len != 0 and m_len != len(elem):
+            raise TypeError("each row of m_b must be of the same size")
+        m_len = len(elem)
+
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    # Perform matrix multiplication
-    result = [[0 for _ in range(len(m_b[0]))] for _ in range(len(m_a))]
-    for i in range(len(m_a)):
-        for j in range(len(m_b[0])):
-            for k in range(len(m_b)):
-                result[i][j] += m_a[i][k] * m_b[k][j]
+    row_1 = []
+    index_1 = 0
 
-    return result
+    for elem in m_a:
+        row_2 = []
+        index_2 = 0
+        num = 0
+
+        while (index_2 < len(m_b[0])):
+            num += elem[index_1] * m_b[index_1][index_2]
+
+            if index_1 == len(m_b) - 1:
+                index_1 = 0
+                index_2 += 1
+                row_2.append(num)
+                num = 0
+
+            else:
+                index_1 += 1
+
+        row_1.append(row_2)
+
+    return row_1

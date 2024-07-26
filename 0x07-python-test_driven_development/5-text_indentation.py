@@ -1,43 +1,24 @@
 #!/usr/bin/python3
+"""4. Text indentation"""
 
-"""
-Module composed by a function that prints 2 new lines after ".?:" characters
-"""
 
 def text_indentation(text):
     """
-    Function that prints 2 new lines after ".?:" characters
-
-    Args:
-        text: input string
-
-    Returns:
-        No return
-
-    Raises:
-        TypeError: If text is not a string
+    Function that prints a text with 2 new lines after each
+    of these characters: ., ? and :
     """
 
-    # Check if the input 'text' is a string
-    if not isinstance(text, str):
+    if type(text) is not str:
         raise TypeError("text must be a string")
 
-    # Create a copy of the input text to avoid modifying the original
-    format_text = text[:]
+    txt = text[:]
 
-    # Iterate through the characters ".?:"
     for char in ".?:":
-        # Split the string 'format_text' using the current character as the separator
-        list_text = format_text.split(char)
-        format_text = ""
+        list_text = txt.split(char)
+        txt = ""
 
-        # Iterate through the resulting substrings
-        for i in list_text:
-            # Remove leading and trailing spaces from the substring
-            i = i.strip(" ")
+        for elem in list_text:
+            elem = elem.strip(" ")
+            txt = elem + char if txt is "" else txt + "\n\n" + elem + char
 
-            # Append the substring followed by the separator to 'format_text'
-            format_text = i + char if format_text is "" else format_text + "\n\n" + i + char
-
-    # Print the formatted text with the last three characters (".?:" removed)
-    print(format_text[:-3], end="")
+    print(txt[:-3], end="")

@@ -1,36 +1,12 @@
-#!/usr/bin/python3
-
-import numpy as np
-
+#!/usr/bin/python3.5
 """
-definition of a lazy matrix function
+7. Lazy matrix multiplication
+101-lazy_matrix_mul.py
 """
+import numpy
 
 
 def lazy_matrix_mul(m_a, m_b):
-    """
-    Multiplies two matrices using NumPy.
+    """Function that multiplies 2 matrices by using the module NumPy"""
 
-    Args:
-        m_a (list of lists): First matrix.
-        m_b (list of lists): Second matrix.
-
-    Returns:
-        numpy.ndarray: Resulting matrix.
-    """
-
-    try:
-        # Convert input matrices to NumPy arrays
-        np_m_a = np.array(m_a)
-        np_m_b = np.array(m_b)
-
-        # Perform matrix multiplication using NumPy's dot function
-        result = np.dot(np_m_a, np_m_b)
-
-        return result.tolist()  # Convert NumPy array back to a Python list
-
-    except ValueError:
-        raise ValueError("shapes (n, m) and (m, p) not aligned")
-
-    except Exception:
-        raise ValueError("Failed to perform matrix multiplication")
+    return numpy.matmul(m_a, m_b)
